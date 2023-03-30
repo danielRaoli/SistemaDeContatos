@@ -1,0 +1,70 @@
+﻿@using SistemaDeContatos.Models.Enums
+@model SistemaDeContatos.Models.Entities.Usuario
+
+@{
+    ViewData["title"] = "Cadastrar novo Usuário";
+}
+
+<div class="justify-content-center">
+    <h1 class="align-content-md-center">@ViewData["title"]</h1>
+</div>
+
+
+@if (TempData["alertError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-close btn-sm close-alert" arial-label="Close"></button>
+        @TempData["alertError"];
+    </div>
+}
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div class="form-group">
+                    <label for="Nome" class="control-label">Digite o nome</label>
+                    <input class="form-control" asp-for="Nome" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Login" class="control-label">Digite o login</label>
+                    <input class="form-control" asp-for="Login" />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="control-label">Digite o email do usuário</label>
+                    <input type="email" class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Senha" class="control-label">Informe a senha do usuário</label>
+                    <input type="password" class="form-control" asp-for="Senha" />
+                    <span asp-validation-for="Senha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Perfil" class="form-label">Perfil</label>
+                    <select class="form-control" asp-for="Perfil">
+                        <option value="">Selecione</option>
+                        <option value="1">@PerfilEnum.Admin</option>
+                        <option value="2">@PerfilEnum.Padrao</option>
+                        
+                    <span asp-validation-for="Perfil" class="text-danger"></span>
+                    </select>
+                
+                </div>
+                <br />
+                <div class="form-group align-content-center">
+                    <button class="btn btn-success" type="submit">Cadastrar</button>
+                    <a asp-action="Index" asp-controller="Usuario" class="btn btn-danger" role="button">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

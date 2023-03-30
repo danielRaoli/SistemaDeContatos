@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.close-alert{
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    border-radius: 15px;
+    width: 30px;
+    height: 31px;
+}
+
+.container{
+    width:100vw;
+    height:100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 400px;
+    height: 400px;
+
+}

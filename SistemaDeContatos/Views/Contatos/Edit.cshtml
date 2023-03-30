@@ -1,0 +1,51 @@
+﻿@model SistemaDeContatos.Models.Entities.Contato;
+@{
+    ViewData["title"] = "Editar Contato";
+}
+
+<div class="justify-content-center">
+    <h1 class="align-content-md-center">@ViewData["title"]</h1>
+</div>
+
+
+@if (TempData["alertError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-close btn-sm close-alert" arial-label="Close"></button>
+        @TempData["alertError"];
+    </div>
+}
+
+
+<div class="Row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="Contatos">
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label class="control-label" asp-for="Nome"></label>
+                <input class="form-control" asp-for="Nome" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input type="email" class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Celular" class="control-label">Celular</label>
+                <input class="form-control" asp-for="Celular" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Editar</button>
+            </div>
+        </form>
+        <a asp-action="Index" asp-controller="Contatos" class="btn btn-danger" role="button">Voltar</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

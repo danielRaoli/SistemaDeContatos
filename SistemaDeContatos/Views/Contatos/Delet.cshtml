@@ -1,0 +1,35 @@
+﻿@model SistemaDeContatos.Models.Entities.Contato;
+
+
+@{
+    ViewData["title"] = "Excluir Contato";
+}
+<div class="text-center">
+    <h1>@ViewData["title"]</h1>
+</div>
+
+
+<div>
+    <h2>Deseja Realmente Apagar este contato? </h2>
+    <div class="row">
+        <div class="col-md-4">
+            <dl>
+                <dt>@Html.DisplayNameFor(x => x.Nome)</dt>
+                <dd>@Html.DisplayFor(x => x.Nome)</dd>
+                <dt>@Html.DisplayNameFor(x => x.Email)</dt>
+                <dd>@Html.DisplayFor(x => x.Email)</dd>
+                <dt>@Html.DisplayNameFor(x => x.Celular)</dt>
+                <dd>@Html.DisplayFor(x => x.Celular)</dd>
+            </dl>
+        </div>
+        <div>
+            <form asp-action="Delet">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">Exluir</button>
+                <a role="button" class="btn btn-primary" asp-action="Index" asp-controller="Contatos">voltar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
